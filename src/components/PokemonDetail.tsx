@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
-import { setPokemonDetails } from "../store/pokemonSlice"; 
+import { setPokemonDetails } from "../store/pokemonSlice";
 
 const PokemonDetail: React.FC = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const PokemonDetail: React.FC = () => {
   const pokemonId = pokemonIdString ? parseInt(pokemonIdString) : null;
 
   useEffect(() => {
-    if (pokemonId && !pokemonDetails) {
+    if (pokemonId) {
       fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
         .then((response) => response.json())
         .then((data) => dispatch(setPokemonDetails(data)))
